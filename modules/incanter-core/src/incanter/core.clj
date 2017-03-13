@@ -76,7 +76,7 @@
   ([data]
      (m/matrix data))
 
-  ([data ncol &]
+  ([data ncol]
      (m/matrix (partition ncol (vectorize data))))
 
   ([init-val rows cols]
@@ -715,7 +715,7 @@
      (m/clone mat)))
 
 (defn to-vect
-  "Converts an array into nested Clojure vectors. 
+  "Converts an array into nested Clojure vectors.
 
   Returns a vector-of-vectors if the given matrix is two-dimensional
   and a flat vector if the matrix is one-dimensional. This is a bit
@@ -1421,7 +1421,7 @@
            res (-> (ds/select-rows data r)
                    (ds/select-columns c))
            res (if-not (nil? filter-fn)
-                 (->> (ds/row-maps res) 
+                 (->> (ds/row-maps res)
                       (mapv #(mapv % col-names))
                       (clojure.core/filter filter-fn))
                  res)]
